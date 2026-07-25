@@ -61,7 +61,8 @@ const otherResearch = [
   { title: "Professional Ethics", meta: "Ethics", href: "/docs/professional-ethics.pdf" },
   { title: "Computer Ethics Paper", meta: "Ethics · Computing", href: "/docs/computer-ethics-paper.pdf" },
   { title: "The Black Lives Matter Movement", meta: "Social Justice", href: "/docs/blm-research-paper.pdf" },
-  { title: "Ethics Paper Series", meta: "Ethics", href: "/docs/ethics-paper-1.pdf" },
+  { title: "Ethics Paper I", meta: "Ethics", href: "/docs/ethics-paper-1.pdf" },
+  { title: "Ethics Paper II", meta: "Ethics", href: "/docs/ethics-paper-2.pdf" },
 ];
 
 const experience = [
