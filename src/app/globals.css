@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #0a0a0a;
+  --body: #1c1c1c;
+  --muted: #6b6b6b;
+  --faint: #9a9a9a;
+  --line: #e5e5e5;
+  --paper: #ffffff;
+  --canvas: #fafafa;
+  --chip: #f2f2f2;
+  --accent: #5b5bf5;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-body: var(--body);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-line: var(--line);
+  --color-paper: var(--paper);
+  --color-canvas: var(--canvas);
+  --color-chip: var(--chip);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-archivo);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--paper);
+  color: var(--body);
+}
+
+/* Collapsible accordion transitions (grid-rows trick avoids max-height guessing) */
+.accordion-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  overflow: hidden;
+  opacity: 0;
+  transition: grid-template-rows 0.45s var(--ease), opacity 0.35s ease;
+}
+.accordion-body > div {
+  overflow: hidden;
+  min-height: 0;
+}
+.accordion-body.open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.chevron {
+  transition: transform 0.4s var(--ease), background 0.3s ease, color 0.3s ease;
+}
+.chevron.open {
+  transform: rotate(180deg);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card-hover {
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 36px -20px rgba(0, 0, 0, 0.22);
+}
