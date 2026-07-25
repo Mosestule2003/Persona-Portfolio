@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Archivo, Geist } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import ScrollProgress from "@/components/ScrollProgress";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
@@ -12,9 +13,9 @@ const archivo = Archivo({
 });
 
 export const metadata: Metadata = {
-  title: "Moses Tule / Founder & Builder",
+  title: "Moses Tule / Founder & AI Builder",
   description:
-    "Moses Tule. Two time startup founder, Computing Science student, and independent AI/ML researcher. Portfolio, research, and memories.",
+    "Moses Tule. AI enthusiast, builder, and two time startup founder. Portfolio, applied AI research, and work.",
 };
 
 export default function RootLayout({
@@ -24,7 +25,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={cn("antialiased", archivo.variable, "font-sans", geist.variable)}>
-      <body>{children}</body>
+      <body>
+        <ScrollProgress />
+        {children}
+      </body>
     </html>
   );
 }

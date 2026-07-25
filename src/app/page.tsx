@@ -6,6 +6,12 @@ import Accordion from "@/components/Accordion";
 import Lightbox from "@/components/Lightbox";
 import { Badge } from "@/components/ui/badge";
 import { GithubIcon, LinkedinIcon } from "@/components/BrandIcons";
+import SectionBanner from "@/components/SectionBanner";
+import { StaggerGroup, StaggerItem } from "@/components/Stagger";
+import AnimatedStat from "@/components/AnimatedStat";
+import MotionButton from "@/components/MotionButton";
+import ParallaxImage from "@/components/ParallaxImage";
+import WorkRow from "@/components/WorkRow";
 
 const work = [
   {
@@ -38,7 +44,7 @@ const research = [
   },
   {
     title: "AI Mosaic: Faces of Emotion",
-    meta: "Applied AI · COMP 3710",
+    meta: "Applied AI · Generative Models",
     summary:
       "A lightweight conditional GAN generating abstract mosaic imagery conditioned on emotion labels, evaluated with a locally trained CNN classifier.",
     points: [
@@ -54,7 +60,7 @@ const research = [
 const otherResearch = [
   { title: "Professional Ethics", meta: "Ethics", href: "/docs/professional-ethics.pdf" },
   { title: "Computer Ethics Paper", meta: "Ethics · Computing", href: "/docs/computer-ethics-paper.pdf" },
-  { title: "The Black Lives Matter Movement", meta: "Philosophy 2010", href: "/docs/blm-research-paper.pdf" },
+  { title: "The Black Lives Matter Movement", meta: "Social Justice", href: "/docs/blm-research-paper.pdf" },
   { title: "Ethics Paper Series", meta: "Ethics", href: "/docs/ethics-paper-1.pdf" },
 ];
 
@@ -95,25 +101,6 @@ function SectionLabel({ n, children }: { n: string; children: React.ReactNode })
   );
 }
 
-/** Full-bleed dark divider banner between major sections, pitch-deck style. */
-function SectionBanner({ n, title, note }: { n: string; title: string; note: string }) {
-  return (
-    <Reveal className="bg-ink text-white" y={0}>
-      <div className="max-w-[1280px] mx-auto px-6 md:px-10 py-14 md:py-20 grid md:grid-cols-[1fr_auto] gap-6 items-start">
-        <div>
-          <span className="inline-flex text-[11px] uppercase tracking-wide bg-white/10 px-3 py-1.5 rounded-full mb-6">
-            Section {n}
-          </span>
-          <h3 className="text-[40px] md:text-[64px] font-bold leading-[1.02] tracking-tight">{title}</h3>
-        </div>
-        <div className="flex flex-col items-start md:items-end justify-between gap-6 h-full">
-          <span className="text-[72px] md:text-[110px] font-bold text-white/15 leading-none">{n}</span>
-          <p className="text-[13px] text-neutral-400 max-w-[220px] text-left md:text-right">{note}</p>
-        </div>
-      </div>
-    </Reveal>
-  );
-}
 
 export default function Home() {
   return (
@@ -160,8 +147,8 @@ export default function Home() {
           <span className="text-[13px] font-bold uppercase tracking-wide text-faint">Intro</span>
           <div>
             <p className="text-[22px] md:text-[26px] leading-snug font-medium text-ink max-w-[780px]">
-              Computing Science student and two time startup founder with 10 founding pilot brands onboarded, $13K
-              in pre-seed capital raised, and a 1,000+ follower audience built from zero.
+              AI enthusiast and two time startup founder with 10 founding pilot brands onboarded, $13K in pre-seed
+              capital raised, and a 1,000+ follower audience built from zero.
             </p>
             <p className="text-[17px] leading-relaxed text-faint mt-6 max-w-[680px]">
               Currently building{" "}
@@ -183,23 +170,13 @@ export default function Home() {
       <div className="max-w-[1280px] mx-auto px-6 md:px-10">
         {/* Work */}
         <section id="work" className="py-14">
-          <div>
-            {work.map((w, i) => (
-              <Reveal key={w.name} delay={i * 60}>
-                <div className="group grid md:grid-cols-[220px_1fr_auto] gap-4 md:gap-8 items-baseline py-7 border-b border-line">
-                  <span className="text-2xl font-bold text-ink">{w.name}</span>
-                  <div>
-                    <span className="text-[13px] text-faint">{w.tag}</span>
-                    <p className="text-[16px] text-body mt-1.5 max-w-[560px]">{w.desc}</p>
-                  </div>
-                  <div className="flex items-center gap-3 shrink-0 justify-self-start md:justify-self-end">
-                    <span className="text-[13px] text-faint whitespace-nowrap">{w.dates}</span>
-                    <ArrowUpRight className="w-5 h-5 text-ink transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </div>
-                </div>
-              </Reveal>
+          <StaggerGroup>
+            {work.map((w) => (
+              <StaggerItem key={w.name}>
+                <WorkRow name={w.name} tag={w.tag} desc={w.desc} dates={w.dates} />
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerGroup>
         </section>
       </div>
 
@@ -208,9 +185,9 @@ export default function Home() {
       <div className="max-w-[1280px] mx-auto px-6 md:px-10">
         {/* Research */}
         <section id="research" className="py-14">
-          <div className="grid md:grid-cols-2 gap-8">
-            {research.map((r, i) => (
-              <Reveal key={r.title} delay={i * 70} className="py-2">
+          <StaggerGroup className="grid md:grid-cols-2 gap-8">
+            {research.map((r) => (
+              <StaggerItem key={r.title} className="py-2">
                 <span className="text-[12px] font-bold uppercase tracking-wide text-faint">{r.meta}</span>
                 <h3 className="text-2xl font-bold text-ink leading-snug mt-2 mb-3">{r.title}</h3>
                 <p className="text-[16px] text-body leading-relaxed max-w-[520px] mb-4">{r.summary}</p>
@@ -230,15 +207,15 @@ export default function Home() {
                     Download full paper <ArrowUpRight className="w-4 h-4" />
                   </a>
                 </Accordion>
-              </Reveal>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerGroup>
 
           <Reveal delay={140} className="mt-10 pt-8 border-t border-line">
             <Accordion
               bare
               triggerClassName="flex items-center gap-2 text-[14px] font-semibold text-ink cursor-pointer"
-              trigger={<span className="underline">Other academic work &middot; ethics &amp; philosophy papers</span>}
+              trigger={<span className="underline">Additional writing &middot; ethics &amp; philosophy</span>}
             >
               <div className="grid md:grid-cols-2 gap-x-8 pt-4">
                 {otherResearch.map((o) => (
@@ -266,20 +243,26 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-4">
             <Reveal className="bg-ink text-white rounded-3xl p-8 flex flex-col justify-between min-h-[220px]">
               <span className="text-[13px] uppercase tracking-wide text-neutral-400">Raised</span>
-              <div className="text-5xl font-bold">$13K</div>
+              <AnimatedStat value={13} prefix="$" suffix="K" className="text-5xl font-bold" />
               <p className="text-[13px] text-neutral-400 max-w-[260px]">
                 Pre-seed capital, pitched and defended directly to investors as a first time founder.
               </p>
             </Reveal>
-            <Reveal delay={60} className="relative rounded-3xl overflow-hidden min-h-[220px]">
-              <Image src="/img/memory1.jpg" alt="Moses working" fill sizes="(max-width: 768px) 100vw, 620px" className="object-cover" />
-            </Reveal>
-            <Reveal delay={120} className="relative rounded-3xl overflow-hidden min-h-[220px]">
-              <Image src="/img/memory2.jpg" alt="Moses building" fill sizes="(max-width: 768px) 100vw, 620px" className="object-cover" />
-            </Reveal>
-            <Reveal delay={180} className="bg-chip rounded-3xl p-8 flex flex-col justify-between min-h-[220px]">
+            <ParallaxImage
+              src="/img/memory1.jpg"
+              alt="Moses working"
+              sizes="(max-width: 768px) 100vw, 620px"
+              wrapperClassName="rounded-3xl min-h-[220px]"
+            />
+            <ParallaxImage
+              src="/img/memory2.jpg"
+              alt="Moses building"
+              sizes="(max-width: 768px) 100vw, 620px"
+              wrapperClassName="rounded-3xl min-h-[220px]"
+            />
+            <Reveal delay={60} className="bg-chip rounded-3xl p-8 flex flex-col justify-between min-h-[220px]">
               <span className="text-[13px] uppercase tracking-wide text-faint">Audience</span>
-              <div className="text-5xl font-bold text-ink">1,000+</div>
+              <AnimatedStat value={1000} suffix="+" className="text-5xl font-bold text-ink" />
               <p className="text-[13px] text-faint max-w-[260px]">
                 LinkedIn followers grown from zero through original, data-cited content.
               </p>
@@ -290,9 +273,9 @@ export default function Home() {
             <span className="text-[13px] font-bold uppercase tracking-wide text-faint">Story</span>
             <div className="space-y-5 max-w-[680px]">
               <p className="text-[17px] leading-relaxed text-body">
-                I&apos;m Moses — a Computing Science student and two time founder who uses AI daily and
-                deliberately, not as a novelty, to research faster, decide faster, and hold myself accountable when
-                no one else is checking.
+                I&apos;m Moses — an AI enthusiast and two time founder who uses AI daily and deliberately, not as a
+                novelty, to research faster, decide faster, and hold myself accountable when no one else is
+                checking.
               </p>
               <p className="text-[17px] leading-relaxed text-body">
                 I&apos;m currently building Rezlv in stealth, an ecommerce operations platform, having onboarded 10
@@ -333,13 +316,15 @@ export default function Home() {
         {/* Skills */}
         <section id="skills" className="py-14 grid md:grid-cols-[220px_1fr] gap-8">
           <span className="text-[13px] font-bold uppercase tracking-wide text-faint">Skills</span>
-          <div className="flex flex-wrap gap-2.5">
+          <StaggerGroup className="flex flex-wrap gap-2.5">
             {skills.map((s) => (
-              <Badge key={s} variant="outline" className="text-[14px] font-medium text-body px-3.5 py-1.5 rounded-full border-line">
-                {s}
-              </Badge>
+              <StaggerItem key={s}>
+                <Badge variant="outline" className="text-[14px] font-medium text-body px-3.5 py-1.5 rounded-full border-line hover:-translate-y-0.5 hover:shadow-sm transition-transform">
+                  {s}
+                </Badge>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerGroup>
         </section>
 
         <hr className="border-line" />
@@ -362,13 +347,16 @@ export default function Home() {
               Illustrative palettes from the AI Mosaic conditional GAN project — abstract emotion-conditioned
               generations, color-coded by class.
             </p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {aiGallery.map((g, i) => (
-                <Reveal key={g.label} delay={i * 50} className={`aspect-square rounded-2xl bg-gradient-to-br ${g.gradient} flex items-end p-4`}>
+            <StaggerGroup className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {aiGallery.map((g) => (
+                <StaggerItem
+                  key={g.label}
+                  className={`aspect-square rounded-2xl bg-gradient-to-br ${g.gradient} flex items-end p-4 transition-transform duration-300 hover:scale-[1.03] hover:shadow-xl`}
+                >
                   <span className="text-[13px] font-semibold text-white/90">{g.label}</span>
-                </Reveal>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerGroup>
           </div>
         </section>
 
@@ -386,28 +374,28 @@ export default function Home() {
               product execution, or Figma UI/UX design. Based in Vancouver, BC — open to remote work worldwide.
             </p>
             <div className="flex flex-wrap gap-3 mt-8">
-              <a
+              <MotionButton
                 href="mailto:officialtule02@gmail.com"
-                className="inline-flex items-center gap-2 bg-ink text-white rounded-full px-6 py-3.5 text-sm font-semibold hover:-translate-y-0.5 transition-transform"
+                className="inline-flex items-center gap-2 bg-ink text-white rounded-full px-6 py-3.5 text-sm font-semibold"
               >
                 <Mail className="w-4 h-4" /> Email me
-              </a>
-              <a
+              </MotionButton>
+              <MotionButton
                 href="https://github.com/Mosestule2003"
                 target="_blank"
                 rel="noopener"
-                className="inline-flex items-center gap-2 border border-line rounded-full px-6 py-3.5 text-sm font-semibold hover:-translate-y-0.5 transition-transform"
+                className="inline-flex items-center gap-2 border border-line rounded-full px-6 py-3.5 text-sm font-semibold"
               >
                 <GithubIcon className="w-4 h-4" /> GitHub
-              </a>
-              <a
+              </MotionButton>
+              <MotionButton
                 href="https://www.linkedin.com/in/moses-tule-146671162"
                 target="_blank"
                 rel="noopener"
-                className="inline-flex items-center gap-2 border border-line rounded-full px-6 py-3.5 text-sm font-semibold hover:-translate-y-0.5 transition-transform"
+                className="inline-flex items-center gap-2 border border-line rounded-full px-6 py-3.5 text-sm font-semibold"
               >
                 <LinkedinIcon className="w-4 h-4" /> LinkedIn
-              </a>
+              </MotionButton>
             </div>
           </Reveal>
         </section>
