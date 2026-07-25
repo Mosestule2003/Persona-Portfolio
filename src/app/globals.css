@@ -10,6 +10,7 @@
   --canvas: #fafafa;
   --chip: #f2f2f2;
   --accent: #5b5bf5;
+  --sage: #e7f2e3;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -23,6 +24,7 @@
   --color-canvas: var(--canvas);
   --color-chip: var(--chip);
   --color-accent: var(--accent);
+  --color-sage: var(--sage);
   --font-sans: var(--font-archivo);
 }
 

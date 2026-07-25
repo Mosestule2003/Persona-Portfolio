@@ -4,43 +4,27 @@ import Reveal from "@/components/Reveal";
 import Accordion from "@/components/Accordion";
 import Lightbox from "@/components/Lightbox";
 
-const services = [
+const work = [
   {
-    title: "Applied Machine Learning",
-    dark: true,
-    body: "Behavioral biometrics, classifiers, and generative models, built and evaluated end to end in Python. LightGBM classifiers on keystroke and mouse dynamics, conditional GANs for image generation, feature engineering, and model evaluation with cross-validation.",
+    name: "Rezlv",
+    tag: "in stealth",
+    desc: "Ecommerce operations platform. Owning end to end technical and business decisions, from product direction to go to market.",
+    dates: "2025–Now",
+    href: "#contact",
   },
   {
-    title: "AI Assisted Research & Workflows",
-    body: "Daily, deliberate use of AI tools to research faster, decide faster, and document reasoning as it evolves. Not novelty use, a real part of how I build, write, and validate work before shipping it.",
-  },
-  {
-    title: "Founder Execution",
-    body: "End to end ownership of product, go to market, and fundraising, with no team to hand work off to. Raised pre-seed capital and onboarded pilot customers from a standing start.",
-  },
-  {
-    title: "Figma UI/UX Design",
-    body: "Complete interface flows and interactive prototypes for mobile and web products, from concept to shippable design.",
+    name: "Proofly",
+    tag: "Founder & CEO",
+    desc: "Tech enabled property evaluation platform. Raised $13,000 in pre-seed funding and completed the Venture Kamloops accelerator.",
+    dates: "May–Oct 2025",
+    href: "#contact",
   },
 ];
 
-const timeline = [
+const research = [
   {
-    role: "Founder, Rezlv (in stealth)",
-    desc: "Owning end to end technical and business decisions for an early stage ecommerce platform. Onboarded 10 founding pilot brands and grew a 1,000+ follower audience pre launch.",
-    dates: "2025 to Now",
-  },
-  {
-    role: "Founder & CEO, Proofly",
-    desc: "Directed a tech enabled property evaluation platform end to end. Raised $13,000 in pre seed funding and completed the Venture Kamloops accelerator.",
-    dates: "May 2025 to Oct 2025",
-  },
-];
-
-const aiProjects = [
-  {
-    badge: "Machine Learning · 2026",
     title: "Detecting KillAura, Flight & X-Ray Cheats in Minecraft Java Edition",
+    meta: "Machine Learning · 2026",
     summary:
       "Behavioral biometrics with LightGBM classifiers trained on keystroke and mouse dynamics, detecting three cheat types from real gameplay data.",
     points: [
@@ -52,8 +36,8 @@ const aiProjects = [
     href: "/docs/minecraft-cheat-detection.pdf",
   },
   {
-    badge: "Applied AI · COMP 3710",
     title: "AI Mosaic: Faces of Emotion",
+    meta: "Applied AI · COMP 3710",
     summary:
       "A lightweight conditional GAN generating abstract mosaic imagery conditioned on emotion labels, evaluated with a locally trained CNN classifier.",
     points: [
@@ -67,30 +51,24 @@ const aiProjects = [
 ];
 
 const otherResearch = [
-  {
-    badge: "Ethics",
-    title: "Professional Ethics",
-    desc: "Ethical frameworks applied to real world decision making scenarios.",
-    href: "/docs/professional-ethics.pdf",
-  },
-  {
-    badge: "Ethics · Computing",
-    title: "Computer Ethics Paper",
-    desc: "Ethical considerations in computing practice, data handling, and responsible design.",
-    href: "/docs/computer-ethics-paper.pdf",
-  },
-  {
-    badge: "Philosophy 2010",
-    title: "The Black Lives Matter Movement",
-    desc: "Historical foundations, milestones, and the justice related issues the movement confronts.",
-    href: "/docs/blm-research-paper.pdf",
-  },
-  {
-    badge: "Ethics",
-    title: "Ethics Paper Series",
-    desc: "Applied ethics coursework examining argument structure and case based reasoning.",
-    href: "/docs/ethics-paper-1.pdf",
-  },
+  { title: "Professional Ethics", meta: "Ethics", href: "/docs/professional-ethics.pdf" },
+  { title: "Computer Ethics Paper", meta: "Ethics · Computing", href: "/docs/computer-ethics-paper.pdf" },
+  { title: "The Black Lives Matter Movement", meta: "Philosophy 2010", href: "/docs/blm-research-paper.pdf" },
+  { title: "Ethics Paper Series", meta: "Ethics", href: "/docs/ethics-paper-1.pdf" },
+];
+
+const experience = [
+  { role: "Founder", org: "Rezlv (in stealth)", dates: "2025 – today" },
+  { role: "Founder & CEO", org: "Proofly", dates: "May 2025 – Oct 2025" },
+];
+
+const skills = [
+  "Applied Machine Learning",
+  "LightGBM & PyTorch",
+  "AI-Assisted Research & Workflows",
+  "Founder-Level Execution",
+  "Figma UI/UX Design",
+  "Python",
 ];
 
 const memories = [
@@ -100,263 +78,141 @@ const memories = [
   { src: "/img/memory4.jpg", alt: "Memory 4" },
 ];
 
+function SectionLabel({ children }: { children: React.ReactNode }) {
+  return <h2 className="text-[15px] font-bold uppercase tracking-wide text-ink mb-8">{children}</h2>;
+}
+
 export default function Home() {
   return (
     <main>
-      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur-md">
-        <div className="max-w-[1160px] mx-auto px-6 h-22 flex items-center justify-between">
-          <Link href="#top" className="font-bold text-[17px]">
-            Moses Tule
-          </Link>
-          <ul className="hidden md:flex gap-8 text-sm text-muted">
-            <li><a href="#about" className="hover:text-ink">About</a></li>
-            <li><a href="#work" className="hover:text-ink">Work</a></li>
-            <li><a href="#research" className="hover:text-ink">Research</a></li>
-            <li><a href="#memories" className="hover:text-ink">Memories</a></li>
-            <li><a href="#contact" className="hover:text-ink">Contact</a></li>
-          </ul>
-          <a
-            href="/docs/resume.pdf"
-            target="_blank"
-            rel="noopener"
-            className="inline-flex items-center gap-2 bg-ink text-white rounded-full px-6 py-3 text-sm font-semibold hover:-translate-y-0.5 transition-transform"
-          >
-            Resume
-          </a>
-        </div>
-      </nav>
-
-      <header id="top" className="pt-8 pb-18">
-        <div className="max-w-[1160px] mx-auto px-6">
-          <div className="grid lg:grid-cols-[380px_1fr] gap-5 items-start">
-            {/* Profile card */}
-            <div className="lg:sticky lg:top-26 border border-line rounded-[28px] p-7 bg-white">
-              <div className="flex items-center gap-3.5 mb-6">
-                <div className="relative w-16 h-16 rounded-2xl overflow-hidden shrink-0">
-                  <Image src="/img/profile.png" alt="Moses Tule" fill sizes="64px" className="object-cover" priority />
-                </div>
-                <div>
-                  <div className="text-xl font-extrabold text-ink leading-tight">Moses Tule</div>
-                  <div className="text-[13px] text-muted">Vancouver, BC &middot; Remote</div>
-                </div>
-              </div>
-
-              <h1 className="text-[26px] leading-[1.25] font-bold text-ink tracking-tight mb-6">
-                Building with AI, on purpose. Founder, ML researcher, and product builder.
-              </h1>
-
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-2 bg-ink text-white rounded-full px-5 py-3 text-sm font-semibold mb-6 hover:-translate-y-0.5 transition-transform"
-              >
-                Let&apos;s talk
+      {/* Hero band */}
+      <div className="bg-sage">
+        <nav>
+          <div className="max-w-[820px] mx-auto px-6 h-24 flex items-center justify-between">
+            <Link href="#top" className="w-9 h-9 rounded-full bg-ink text-white flex items-center justify-center font-bold text-sm">
+              M
+            </Link>
+            <ul className="flex gap-7 text-sm font-medium text-ink">
+              <li><a href="#work" className="hover:opacity-60">Work</a></li>
+              <li><a href="#research" className="hover:opacity-60">Research</a></li>
+              <li><a href="#about" className="hover:opacity-60">About</a></li>
+              <li><a href="#contact" className="hover:opacity-60">Contact</a></li>
+            </ul>
+            <div className="flex gap-4">
+              <a href="https://github.com/Mosestule2003" target="_blank" rel="noopener" aria-label="GitHub" className="text-ink hover:opacity-60">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.98 5.24.98 11.52c0 4.94 3.2 9.13 7.65 10.6.56.1.76-.24.76-.54v-2.1c-3.11.68-3.77-1.5-3.77-1.5-.51-1.3-1.24-1.65-1.24-1.65-1.02-.7.08-.68.08-.68 1.12.08 1.71 1.15 1.71 1.15 1 1.71 2.62 1.22 3.26.93.1-.72.39-1.22.71-1.5-2.49-.28-5.1-1.24-5.1-5.53 0-1.22.44-2.22 1.15-3-.11-.28-.5-1.42.11-2.95 0 0 .95-.3 3.11 1.15a10.8 10.8 0 015.66 0c2.16-1.46 3.11-1.15 3.11-1.15.61 1.53.22 2.67.11 2.95.72.78 1.15 1.78 1.15 3 0 4.3-2.62 5.24-5.12 5.52.4.35.76 1.03.76 2.08v3.08c0 .3.2.65.77.54 4.44-1.48 7.64-5.67 7.64-10.6C23.02 5.24 18.27.5 12 .5z"/></svg>
               </a>
-
-              <div className="flex flex-wrap gap-2 mb-6">
-                {["Applied ML", "Founder Execution", "AI Workflows", "Figma", "Python"].map((tag) => (
-                  <span key={tag} className="inline-flex items-center border border-line rounded-full px-3 py-1.5 text-[12.5px] font-medium text-body">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
-              <div className="bg-canvas border border-line rounded-[18px] p-4.5">
-                <p className="text-[13.5px] text-body leading-relaxed mb-3">
-                  &ldquo;Own the whole problem, don&apos;t wait for a team that doesn&apos;t exist yet. Use AI as a
-                  research and execution multiplier, not a novelty.&rdquo;
-                </p>
-                <div className="flex items-center gap-2">
-                  <div className="relative w-7 h-7 rounded-full overflow-hidden shrink-0">
-                    <Image src="/img/profile.png" alt="Moses Tule" fill sizes="28px" className="object-cover" />
-                  </div>
-                  <div>
-                    <div className="text-xs font-bold text-ink">Moses Tule</div>
-                    <div className="text-[11px] text-muted">Founder, Rezlv</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Stacked visual panels */}
-            <div className="grid gap-4">
-              <Reveal className="relative aspect-[16/8] rounded-[28px] overflow-hidden">
-                <Image src="/img/memory2.jpg" alt="Moses building" fill sizes="(max-width: 1024px) 100vw, 760px" className="object-cover" priority />
-              </Reveal>
-              <div className="grid grid-cols-2 gap-4">
-                <Reveal delay={70} className="relative aspect-square rounded-[28px] overflow-hidden">
-                  <Image src="/img/memory3.jpg" alt="Moses with collaborators" fill sizes="(max-width: 1024px) 50vw, 370px" className="object-cover" />
-                </Reveal>
-                <Reveal delay={140} className="bg-ink text-white rounded-[28px] p-6 flex flex-col justify-between">
-                  <span className="inline-flex text-[11px] uppercase tracking-wide bg-white/10 px-3 py-1.5 rounded-full self-start">
-                    Currently
-                  </span>
-                  <div>
-                    <div className="text-2xl font-extrabold leading-tight mb-1.5">10 pilot brands</div>
-                    <p className="text-[13px] text-neutral-400">Onboarded from zero at Rezlv, pre launch.</p>
-                  </div>
-                </Reveal>
-              </div>
-              <Reveal delay={210} className="relative aspect-[16/9] rounded-[28px] overflow-hidden">
-                <Image src="/img/memory1.jpg" alt="Moses working" fill sizes="(max-width: 1024px) 100vw, 760px" className="object-cover" />
-              </Reveal>
+              <a href="https://www.linkedin.com/in/moses-tule-146671162" target="_blank" rel="noopener" aria-label="LinkedIn" className="text-ink hover:opacity-60">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM3.56 20.45h3.56V9H3.56v11.45z"/></svg>
+              </a>
             </div>
           </div>
-        </div>
-      </header>
+        </nav>
 
-      <div className="max-w-[1160px] mx-auto px-6">
-        {/* About */}
-        <section id="about" className="py-18">
-          <span className="inline-flex border border-line rounded-full px-3.5 py-1.5 text-[13px] text-muted mb-4.5">About Me</span>
-          <div className="grid md:grid-cols-[1.4fr_0.9fr] gap-10 items-start">
-            <h2 className="text-[34px] leading-tight font-bold text-ink tracking-tight">
-              Building has always been more than a job for me, it&apos;s how I think.
-            </h2>
-            <p className="text-muted text-[15px] pt-1.5">
-              I use AI daily and deliberately, not as a novelty, to research faster, decide faster, and hold myself
-              accountable when no one else is checking.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-4 mt-8">
-            <Reveal className="border border-line rounded-[18px] p-6">
-              <div className="text-[40px] font-extrabold text-ink leading-none">$13K</div>
-              <div className="text-[13px] text-muted mt-2">
-                Pre-seed raised as a first time founder, pitched and defended directly to investors.
-              </div>
-            </Reveal>
-            <Reveal delay={70} className="border border-line rounded-[18px] p-6">
-              <div className="text-[40px] font-extrabold text-ink leading-none">1,000+</div>
-              <div className="text-[13px] text-muted mt-2">
-                LinkedIn followers grown from zero through original, data-cited content.
-              </div>
-            </Reveal>
-            <Reveal delay={140} className="border border-line rounded-[18px] p-6">
-              <div className="text-[40px] font-extrabold text-ink leading-none">10</div>
-              <div className="text-[13px] text-muted mt-2">
-                Founding pilot brands onboarded from a standing start.
-              </div>
-            </Reveal>
-          </div>
-        </section>
+        <header id="top" className="max-w-[820px] mx-auto px-6 pt-8 pb-24">
+          <h1 className="text-[44px] md:text-[64px] leading-[1.05] font-bold text-ink tracking-tight">
+            Moses Tule
+            <br />
+            Founder &amp; AI/ML builder
+          </h1>
+        </header>
+      </div>
 
-        {/* Services */}
-        <section id="services" className="py-18">
-          <span className="inline-flex border border-line rounded-full px-3.5 py-1.5 text-[13px] text-muted mb-4.5">What I Do</span>
-          <div className="grid md:grid-cols-[1.4fr_0.9fr] gap-10 items-start">
-            <h2 className="text-[34px] leading-tight font-bold text-ink tracking-tight">
-              A comprehensive look at how I work and what I bring to the table.
-            </h2>
-            <p className="text-muted text-[15px] pt-1.5">
-              Founder level ownership, applied research, and product design, all in one person.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-4 mt-8">
-            {services.map((s, i) => (
-              <Reveal key={s.title} delay={i * 70}>
-                <div
-                  className={`card-hover border rounded-[18px] px-6.5 pb-6.5 ${
-                    s.dark ? "bg-ink text-white border-ink" : "bg-white border-line"
-                  }`}
-                >
-                  <Accordion
-                    triggerClassName="w-full flex items-center justify-between gap-3 pt-4.5 text-left cursor-pointer"
-                    bodyClassName="text-sm leading-relaxed"
-                    trigger={<h3 className="text-lg font-extrabold">{s.title}</h3>}
-                  >
-                    <p className={`pt-3 pb-1 text-sm leading-relaxed ${s.dark ? "text-neutral-300" : "text-muted"}`}>
-                      {s.body}
-                    </p>
-                  </Accordion>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </section>
+      <div className="max-w-[820px] mx-auto px-6">
+        {/* Bio intro */}
+        <Reveal className="py-14">
+          <p className="text-[19px] leading-relaxed text-faint">
+            Computing Science student and two time startup founder with 10 founding pilot brands onboarded, $13K in
+            pre-seed capital raised, and a 1,000+ follower audience built from zero. Available for remote-friendly
+            work and collaborations.
+          </p>
+          <p className="text-[19px] leading-relaxed text-faint mt-5">
+            Currently building{" "}
+            <a href="#contact" className="underline text-body">
+              Rezlv
+            </a>{" "}
+            in stealth. Previously founded{" "}
+            <a href="#contact" className="underline text-body">
+              Proofly
+            </a>
+            , a tech enabled property evaluation platform.
+          </p>
+        </Reveal>
+
+        <hr className="border-line" />
 
         {/* Work */}
-        <section id="work" className="py-18">
-          <span className="inline-flex border border-line rounded-full px-3.5 py-1.5 text-[13px] text-muted mb-4.5">Experience</span>
-          <div className="grid md:grid-cols-[1.4fr_0.9fr] gap-10 items-start">
-            <h2 className="text-[34px] leading-tight font-bold text-ink tracking-tight">
-              A snapshot of what I&apos;ve built and when.
-            </h2>
-            <p className="text-muted text-[15px] pt-1.5">Two ventures, run with full ownership from day one.</p>
-          </div>
-          <div className="mt-6 border-t border-line">
-            {timeline.map((t, i) => (
-              <Reveal key={t.role} delay={i * 70}>
-                <div className="grid md:grid-cols-[1fr_auto] gap-6 py-6.5 border-b border-line items-center hover:bg-canvas transition-colors">
+        <section id="work" className="py-14">
+          <SectionLabel>Work</SectionLabel>
+          <div>
+            {work.map((w, i) => (
+              <Reveal key={w.name} delay={i * 60}>
+                <a
+                  href={w.href}
+                  className="group flex items-center justify-between gap-6 py-6 border-b border-line"
+                >
                   <div>
-                    <p className="text-[17px] font-bold text-ink mb-1">{t.role}</p>
-                    <p className="text-sm text-muted max-w-[560px]">{t.desc}</p>
+                    <div className="flex items-baseline gap-2.5">
+                      <span className="text-xl font-bold text-ink">{w.name}</span>
+                      <span className="text-[13px] text-faint">{w.tag}</span>
+                    </div>
+                    <p className="text-[15px] text-faint mt-1.5 max-w-[520px]">{w.desc}</p>
                   </div>
-                  <div className="text-lg md:text-[22px] font-bold text-ink whitespace-nowrap">{t.dates}</div>
-                </div>
+                  <div className="flex items-center gap-4 shrink-0">
+                    <span className="text-[13px] text-faint whitespace-nowrap hidden sm:inline">{w.dates}</span>
+                    <span className="text-xl text-ink transition-transform group-hover:translate-x-1">&#8594;</span>
+                  </div>
+                </a>
               </Reveal>
             ))}
           </div>
         </section>
 
-        {/* Research */}
-        <section id="research" className="py-18">
-          <span className="inline-flex border border-line rounded-full px-3.5 py-1.5 text-[13px] text-muted mb-4.5">Research</span>
-          <div className="grid md:grid-cols-[1.4fr_0.9fr] gap-10 items-start">
-            <h2 className="text-[34px] leading-tight font-bold text-ink tracking-tight">
-              Machine learning research, front and center.
-            </h2>
-            <p className="text-muted text-[15px] pt-1.5">
-              Two applied AI projects, expanded below. Academic ethics coursework is available further down.
-            </p>
-          </div>
+        <hr className="border-line" />
 
-          <div className="grid md:grid-cols-2 gap-5 mt-8">
-            {aiProjects.map((p, i) => (
-              <Reveal key={p.title} delay={i * 90}>
-                <article className="card-hover border border-line rounded-[28px] p-7.5">
-                  <span className="inline-flex text-[11px] uppercase tracking-wide bg-chip text-body px-3 py-1.5 rounded-full mb-3.5">
-                    {p.badge}
-                  </span>
-                  <h3 className="text-xl font-extrabold text-ink leading-snug mb-2.5">{p.title}</h3>
-                  <p className="text-sm text-muted leading-relaxed">{p.summary}</p>
-                  <Accordion
-                    triggerClassName="w-full mt-5 bg-chip hover:bg-neutral-200 rounded-full px-4.5 py-3 flex items-center justify-between gap-3 text-[13px] font-bold text-ink cursor-pointer transition-colors"
-                    trigger={<span>Read the technical breakdown</span>}
-                  >
-                    <ul className="pt-4.5 pl-4.5 list-disc space-y-2.5">
-                      {p.points.map((pt) => (
-                        <li key={pt} className="text-[13.5px] text-body leading-relaxed">
-                          {pt}
-                        </li>
-                      ))}
-                    </ul>
-                    <a
-                      href={p.href}
-                      target="_blank"
-                      rel="noopener"
-                      className="inline-flex mt-1 mb-1 bg-ink text-white rounded-full px-4.5 py-2.5 text-[13px] font-bold"
-                    >
-                      Download full paper
-                    </a>
-                  </Accordion>
-                </article>
+        {/* Research */}
+        <section id="research" className="py-14">
+          <SectionLabel>Research</SectionLabel>
+          <div>
+            {research.map((r, i) => (
+              <Reveal key={r.title} delay={i * 70} className="py-6 border-b border-line">
+                <div className="flex items-baseline justify-between gap-4 mb-1.5">
+                  <span className="text-lg font-bold text-ink">{r.title}</span>
+                </div>
+                <div className="text-[13px] text-faint mb-2.5">{r.meta}</div>
+                <p className="text-[15px] text-body leading-relaxed max-w-[600px] mb-3">{r.summary}</p>
+                <Accordion
+                  triggerClassName="flex items-center gap-2 text-[14px] font-semibold text-ink cursor-pointer"
+                  trigger={<span className="underline">Read the technical breakdown</span>}
+                >
+                  <ul className="pt-4 pl-5 list-disc space-y-2 max-w-[620px]">
+                    {r.points.map((pt) => (
+                      <li key={pt} className="text-[14px] text-body leading-relaxed">
+                        {pt}
+                      </li>
+                    ))}
+                  </ul>
+                  <a href={r.href} target="_blank" rel="noopener" className="inline-flex mt-3 text-[14px] font-semibold underline text-ink">
+                    Download full paper &#8594;
+                  </a>
+                </Accordion>
               </Reveal>
             ))}
           </div>
 
-          <Reveal delay={180} className="mt-8 border border-line rounded-[28px] overflow-hidden">
+          <Reveal delay={140} className="mt-4">
             <Accordion
-              triggerClassName="w-full bg-canvas px-7 py-5.5 flex items-center justify-between gap-4 text-[15px] font-bold text-ink cursor-pointer"
-              trigger={<span>Other academic work &middot; ethics &amp; philosophy papers</span>}
+              triggerClassName="flex items-center gap-2 text-[14px] font-semibold text-ink cursor-pointer py-3"
+              trigger={<span className="underline">Other academic work &middot; ethics &amp; philosophy papers</span>}
             >
-              <div className="grid md:grid-cols-2 gap-4.5 p-7">
+              <div className="pt-2 pb-2">
                 {otherResearch.map((o) => (
-                  <div key={o.title} className="border border-line rounded-[18px] p-5">
-                    <span className="inline-flex text-[10.5px] uppercase tracking-wide text-muted border border-line px-2.5 py-0.5 rounded-full mb-2.5">
-                      {o.badge}
-                    </span>
-                    <h4 className="text-[15px] font-bold text-ink mb-1.5">{o.title}</h4>
-                    <p className="text-[13px] text-muted mb-3 leading-relaxed">{o.desc}</p>
-                    <a href={o.href} target="_blank" rel="noopener" className="text-[13px] font-bold text-ink hover:text-accent">
+                  <div key={o.title} className="flex items-center justify-between gap-4 py-3 border-b border-line last:border-b-0">
+                    <div>
+                      <div className="text-[15px] font-semibold text-ink">{o.title}</div>
+                      <div className="text-[12.5px] text-faint">{o.meta}</div>
+                    </div>
+                    <a href={o.href} target="_blank" rel="noopener" className="text-[13px] font-semibold underline text-ink whitespace-nowrap">
                       Download
                     </a>
                   </div>
@@ -366,97 +222,115 @@ export default function Home() {
           </Reveal>
         </section>
 
+        <hr className="border-line" />
+
+        {/* About */}
+        <section id="about" className="py-14">
+          <SectionLabel>About</SectionLabel>
+          <Reveal>
+            <p className="text-[17px] leading-relaxed text-body max-w-[620px]">
+              I&apos;m Moses — a Computing Science student and two time founder who uses AI daily and deliberately,
+              not as a novelty, to research faster, decide faster, and hold myself accountable when no one else is
+              checking.
+            </p>
+            <p className="text-[17px] leading-relaxed text-body max-w-[620px] mt-5">
+              I&apos;m currently building Rezlv in stealth, an ecommerce operations platform, having onboarded 10
+              founding pilot brands from a standing start and grown a 1,000+ follower audience through original,
+              data-cited content ahead of launch.
+            </p>
+            <p className="text-[17px] leading-relaxed text-body max-w-[620px] mt-5">
+              Before that I founded and ran Proofly, a tech enabled property evaluation platform, where I raised
+              $13,000 in pre-seed funding, pitched and defended the business case directly to investors, and
+              completed the Venture Kamloops accelerator.
+            </p>
+            <p className="text-[17px] leading-relaxed text-body max-w-[620px] mt-5">
+              Outside of founder work, I&apos;ve spent time on independent machine learning research — behavioral
+              biometrics for game-cheat detection, conditional GANs for image generation — and I design complete
+              UI/UX flows in Figma for the products I ship.
+            </p>
+          </Reveal>
+        </section>
+
+        <hr className="border-line" />
+
+        {/* Experience */}
+        <section id="experience" className="py-14">
+          <SectionLabel>Experience</SectionLabel>
+          <div>
+            {experience.map((e, i) => (
+              <Reveal key={e.role + e.org} delay={i * 60} className="flex items-baseline justify-between gap-4 py-4 border-b border-line">
+                <div>
+                  <span className="text-[16px] font-bold text-ink">{e.role}</span>
+                  <span className="text-[16px] text-faint"> &middot; {e.org}</span>
+                </div>
+                <span className="text-[13px] text-faint whitespace-nowrap">{e.dates}</span>
+              </Reveal>
+            ))}
+          </div>
+          <a href="/docs/resume.pdf" target="_blank" rel="noopener" className="inline-flex mt-6 text-[14px] font-semibold underline text-ink">
+            See full resume &#8594;
+          </a>
+        </section>
+
+        <hr className="border-line" />
+
+        {/* Skills */}
+        <section id="skills" className="py-14">
+          <SectionLabel>Skills</SectionLabel>
+          <div className="flex flex-wrap gap-x-8 gap-y-3">
+            {skills.map((s) => (
+              <span key={s} className="text-[16px] text-body">
+                {s}
+              </span>
+            ))}
+          </div>
+        </section>
+
+        <hr className="border-line" />
+
         {/* Memories */}
-        <section id="memories" className="py-18">
-          <span className="inline-flex border border-line rounded-full px-3.5 py-1.5 text-[13px] text-muted mb-4.5">Memories</span>
-          <h2 className="text-[34px] leading-tight font-bold text-ink tracking-tight mb-8">Life outside the work.</h2>
+        <section id="memories" className="py-14">
+          <SectionLabel>Memories</SectionLabel>
           <Reveal>
             <Lightbox images={memories} />
           </Reveal>
         </section>
 
-        {/* Pull quote */}
-        <Reveal className="border-t border-line py-18 text-center">
-          <div className="text-[64px] text-line leading-none mb-2">&#8220;</div>
-          <p className="text-[22px] leading-relaxed font-medium text-ink max-w-[720px] mx-auto mb-7">
-            Own the whole problem, don&apos;t wait for a team that doesn&apos;t exist yet. Use AI as a research and
-            execution multiplier, not a novelty. Document reasoning so decisions stay traceable as things evolve.
-          </p>
-          <div className="flex items-center justify-center gap-3">
-            <div className="relative w-10.5 h-10.5 rounded-full overflow-hidden">
-              <Image src="/img/profile.png" alt="Moses Tule" fill sizes="42px" className="object-cover" />
-            </div>
-            <div className="text-left">
-              <div className="font-bold text-sm text-ink">Moses Tule</div>
-              <div className="text-[13px] text-muted">Founder, Rezlv</div>
-            </div>
-          </div>
-        </Reveal>
-      </div>
+        <hr className="border-line" />
 
-      <div className="max-w-[1160px] mx-auto px-6">
-        <section id="contact" className="py-18">
-          <Reveal className="bg-ink text-white rounded-[28px] p-10 md:p-16 flex flex-wrap justify-between items-end gap-6">
-            <h2 className="text-[34px] md:text-[52px] font-extrabold leading-tight tracking-tight">
-              Let&apos;s
-              <br />
-              Connect
-            </h2>
-            <div className="flex gap-3 flex-wrap">
-              <a href="mailto:officialtule02@gmail.com" className="inline-flex items-center gap-2 bg-white text-ink rounded-full px-6 py-3.5 text-sm font-semibold hover:-translate-y-0.5 transition-transform">
-                Email Me &#8599;
+        {/* Contact */}
+        <section id="contact" className="py-14">
+          <SectionLabel>Get in touch</SectionLabel>
+          <Reveal>
+            <p className="text-[17px] leading-relaxed text-body max-w-[600px]">
+              Have a project, role, or idea in mind? Send me an email at{" "}
+              <a href="mailto:officialtule02@gmail.com" className="underline font-semibold text-ink">
+                officialtule02@gmail.com
               </a>
-              <a
-                href="https://www.linkedin.com/in/moses-tule-146671162"
-                target="_blank"
-                rel="noopener"
-                className="inline-flex items-center gap-2 border border-neutral-700 text-white rounded-full px-6 py-3.5 text-sm font-semibold hover:-translate-y-0.5 transition-transform"
-              >
-                LinkedIn &#8599;
+              .
+            </p>
+            <p className="text-[17px] leading-relaxed text-body max-w-[600px] mt-4">
+              I can help with applied machine learning work, founder-level product execution, or Figma UI/UX design.
+              Based in Vancouver, BC — open to remote work worldwide.
+            </p>
+            <div className="flex gap-6 mt-7 text-[14px] font-semibold">
+              <a href="https://github.com/Mosestule2003" target="_blank" rel="noopener" className="underline text-ink">
+                GitHub
               </a>
-              <a
-                href="https://github.com/Mosestule2003"
-                target="_blank"
-                rel="noopener"
-                className="inline-flex items-center gap-2 border border-neutral-700 text-white rounded-full px-6 py-3.5 text-sm font-semibold hover:-translate-y-0.5 transition-transform"
-              >
-                GitHub &#8599;
+              <a href="https://www.linkedin.com/in/moses-tule-146671162" target="_blank" rel="noopener" className="underline text-ink">
+                LinkedIn
+              </a>
+              <a href="mailto:officialtule02@gmail.com" className="underline text-ink">
+                Email
               </a>
             </div>
           </Reveal>
         </section>
       </div>
 
-      <footer className="border-t border-line py-12">
-        <div className="max-w-[1160px] mx-auto px-6">
-          <div className="grid md:grid-cols-[1.4fr_1fr_1fr_1fr] gap-6">
-            <div>
-              <div className="font-bold text-base mb-2.5">Moses Tule</div>
-              <p className="text-[13px] text-muted max-w-[260px] leading-relaxed">
-                Computing Science student and two time startup founder building products, research, and companies.
-              </p>
-            </div>
-            <div>
-              <h5 className="text-[12px] uppercase tracking-wide text-faint mb-3">Site</h5>
-              <a href="#about" className="block text-sm text-body mb-2">About</a>
-              <a href="#work" className="block text-sm text-body mb-2">Work</a>
-              <a href="#research" className="block text-sm text-body mb-2">Research</a>
-              <a href="#memories" className="block text-sm text-body mb-2">Memories</a>
-            </div>
-            <div>
-              <h5 className="text-[12px] uppercase tracking-wide text-faint mb-3">Contact</h5>
-              <span className="block text-sm text-body mb-2">officialtule02@gmail.com</span>
-              <span className="block text-sm text-body mb-2">Vancouver, BC, Canada</span>
-            </div>
-            <div>
-              <h5 className="text-[12px] uppercase tracking-wide text-faint mb-3">Elsewhere</h5>
-              <a href="https://github.com/Mosestule2003" target="_blank" rel="noopener" className="block text-sm text-body mb-2">GitHub</a>
-              <a href="https://www.linkedin.com/in/moses-tule-146671162" target="_blank" rel="noopener" className="block text-sm text-body mb-2">LinkedIn</a>
-            </div>
-          </div>
-          <div className="mt-10 pt-5 border-t border-line text-[13px] text-faint text-center">
-            All rights reserved, Moses Tule 2026
-          </div>
+      <footer className="border-t border-line py-8">
+        <div className="max-w-[820px] mx-auto px-6 text-[13px] text-faint text-center">
+          &copy; 2026 Moses Tule. All rights reserved.
         </div>
       </footer>
     </main>
