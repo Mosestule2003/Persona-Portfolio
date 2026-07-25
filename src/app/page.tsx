@@ -126,26 +126,80 @@ export default function Home() {
         </div>
       </nav>
 
-      <header id="top" className="pt-10 pb-16">
+      <header id="top" className="pt-8 pb-18">
         <div className="max-w-[1160px] mx-auto px-6">
-          <span className="inline-flex items-center border border-line rounded-full px-3.5 py-1.5 text-[13px] text-muted mb-6">
-            Applied AI &middot; Machine Learning &middot; Founder
-          </span>
-          <div className="grid grid-cols-1 md:grid-cols-[1fr_220px] gap-6 items-end">
-            <h1 className="text-[56px] md:text-[108px] leading-[0.98] font-extrabold tracking-tight text-ink">
-              Building with
-              <br />
-              AI, <span className="text-accent">on purpose.</span>
-            </h1>
-            <div className="relative aspect-[3/4] rounded-[28px] overflow-hidden">
-              <Image src="/img/profile.png" alt="Moses Tule" fill sizes="220px" className="object-cover" priority />
+          <div className="grid lg:grid-cols-[380px_1fr] gap-5 items-start">
+            {/* Profile card */}
+            <div className="lg:sticky lg:top-26 border border-line rounded-[28px] p-7 bg-white">
+              <div className="flex items-center gap-3.5 mb-6">
+                <div className="relative w-16 h-16 rounded-2xl overflow-hidden shrink-0">
+                  <Image src="/img/profile.png" alt="Moses Tule" fill sizes="64px" className="object-cover" priority />
+                </div>
+                <div>
+                  <div className="text-xl font-extrabold text-ink leading-tight">Moses Tule</div>
+                  <div className="text-[13px] text-muted">Vancouver, BC &middot; Remote</div>
+                </div>
+              </div>
+
+              <h1 className="text-[26px] leading-[1.25] font-bold text-ink tracking-tight mb-6">
+                Building with AI, on purpose. Founder, ML researcher, and product builder.
+              </h1>
+
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 bg-ink text-white rounded-full px-5 py-3 text-sm font-semibold mb-6 hover:-translate-y-0.5 transition-transform"
+              >
+                Let&apos;s talk
+              </a>
+
+              <div className="flex flex-wrap gap-2 mb-6">
+                {["Applied ML", "Founder Execution", "AI Workflows", "Figma", "Python"].map((tag) => (
+                  <span key={tag} className="inline-flex items-center border border-line rounded-full px-3 py-1.5 text-[12.5px] font-medium text-body">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <div className="bg-canvas border border-line rounded-[18px] p-4.5">
+                <p className="text-[13.5px] text-body leading-relaxed mb-3">
+                  &ldquo;Own the whole problem, don&apos;t wait for a team that doesn&apos;t exist yet. Use AI as a
+                  research and execution multiplier, not a novelty.&rdquo;
+                </p>
+                <div className="flex items-center gap-2">
+                  <div className="relative w-7 h-7 rounded-full overflow-hidden shrink-0">
+                    <Image src="/img/profile.png" alt="Moses Tule" fill sizes="28px" className="object-cover" />
+                  </div>
+                  <div>
+                    <div className="text-xs font-bold text-ink">Moses Tule</div>
+                    <div className="text-[11px] text-muted">Founder, Rezlv</div>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-          <div className="flex justify-start md:justify-end mt-4">
-            <p className="max-w-[280px] text-sm text-muted">
-              Hi, I&apos;m Moses. A Computing Science student who trains models, builds products, and runs companies,
-              using AI daily as a research and execution multiplier, not a novelty.
-            </p>
+
+            {/* Stacked visual panels */}
+            <div className="grid gap-4">
+              <Reveal className="relative aspect-[16/8] rounded-[28px] overflow-hidden">
+                <Image src="/img/memory2.jpg" alt="Moses building" fill sizes="(max-width: 1024px) 100vw, 760px" className="object-cover" priority />
+              </Reveal>
+              <div className="grid grid-cols-2 gap-4">
+                <Reveal delay={70} className="relative aspect-square rounded-[28px] overflow-hidden">
+                  <Image src="/img/memory3.jpg" alt="Moses with collaborators" fill sizes="(max-width: 1024px) 50vw, 370px" className="object-cover" />
+                </Reveal>
+                <Reveal delay={140} className="bg-ink text-white rounded-[28px] p-6 flex flex-col justify-between">
+                  <span className="inline-flex text-[11px] uppercase tracking-wide bg-white/10 px-3 py-1.5 rounded-full self-start">
+                    Currently
+                  </span>
+                  <div>
+                    <div className="text-2xl font-extrabold leading-tight mb-1.5">10 pilot brands</div>
+                    <p className="text-[13px] text-neutral-400">Onboarded from zero at Rezlv, pre launch.</p>
+                  </div>
+                </Reveal>
+              </div>
+              <Reveal delay={210} className="relative aspect-[16/9] rounded-[28px] overflow-hidden">
+                <Image src="/img/memory1.jpg" alt="Moses working" fill sizes="(max-width: 1024px) 100vw, 760px" className="object-cover" />
+              </Reveal>
+            </div>
           </div>
         </div>
       </header>
@@ -163,28 +217,23 @@ export default function Home() {
               accountable when no one else is checking.
             </p>
           </div>
-          <div className="grid md:grid-cols-[1fr_280px] gap-6 items-center mt-8">
-            <Reveal className="relative aspect-[16/10.5] rounded-[28px] overflow-hidden">
-              <Image src="/img/memory1.jpg" alt="Moses working" fill sizes="(max-width: 768px) 100vw, 700px" className="object-cover" />
+          <div className="grid md:grid-cols-3 gap-4 mt-8">
+            <Reveal className="border border-line rounded-[18px] p-6">
+              <div className="text-[40px] font-extrabold text-ink leading-none">$13K</div>
+              <div className="text-[13px] text-muted mt-2">
+                Pre-seed raised as a first time founder, pitched and defended directly to investors.
+              </div>
             </Reveal>
-            <Reveal className="flex flex-col gap-7" delay={100}>
-              <div>
-                <div className="text-[40px] font-extrabold text-ink leading-none">$13K</div>
-                <div className="text-[13px] text-muted mt-1.5 max-w-[220px]">
-                  Pre-seed raised as a first time founder, pitched and defended directly to investors.
-                </div>
+            <Reveal delay={70} className="border border-line rounded-[18px] p-6">
+              <div className="text-[40px] font-extrabold text-ink leading-none">1,000+</div>
+              <div className="text-[13px] text-muted mt-2">
+                LinkedIn followers grown from zero through original, data-cited content.
               </div>
-              <div>
-                <div className="text-[40px] font-extrabold text-ink leading-none">1,000+</div>
-                <div className="text-[13px] text-muted mt-1.5 max-w-[220px]">
-                  LinkedIn followers grown from zero through original, data-cited content.
-                </div>
-              </div>
-              <div>
-                <div className="text-[40px] font-extrabold text-ink leading-none">10</div>
-                <div className="text-[13px] text-muted mt-1.5 max-w-[220px]">
-                  Founding pilot brands onboarded from a standing start.
-                </div>
+            </Reveal>
+            <Reveal delay={140} className="border border-line rounded-[18px] p-6">
+              <div className="text-[40px] font-extrabold text-ink leading-none">10</div>
+              <div className="text-[13px] text-muted mt-2">
+                Founding pilot brands onboarded from a standing start.
               </div>
             </Reveal>
           </div>
